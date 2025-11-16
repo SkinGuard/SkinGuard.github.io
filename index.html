@@ -3,36 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greetmed - Framework Only</title>
+    <title>SkinGuard - Proactive Eczema Management</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- GSAP for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0056b3',
-                        secondary: '#6c757d',
-                        light: '#f8f9fa',
-                        dark: '#343a40',
-                        success: '#28a745',
-                        info: '#17a2b8',
-                        warning: '#ffc107',
-                        danger: '#dc3545',
-                        white: '#ffffff',
-                        muted: '#6c757d'
+                        primary: '#2563eb',
+                        secondary: '#10b981',
+                        accent: '#3b82f6',
+                        light: '#f3f4f6',
+                        dark: '#1f2937'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif']
                     },
                     boxShadow: {
-                        'custom': '0 4px 6px rgba(0, 0, 0, 0.1)',
-                        'hover': '0 10px 15px rgba(0, 0, 0, 0.1)',
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)'
                     }
                 }
             }
@@ -40,1023 +35,377 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
             .text-shadow {
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .bg-gradient {
+                background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
             }
             .transition-all-300 {
-                transition: all 300ms ease-in-out;
-            }
-            .bg-gradient-primary {
-                background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
-            }
-            .bg-gradient-light {
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                transition: all 0.3s ease;
             }
         }
         
-        /* Custom CSS extracted from the original website */
-        html {
+        /* Custom Styles */
+        body {
             scroll-behavior: smooth;
         }
         
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            color: #343a40;
-            overflow-x: hidden;
+        .section-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .container {
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-        }
-        
-        @media (min-width: 576px) {
-            .container {
-                max-width: 540px;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                max-width: 720px;
-            }
-        }
-        
-        @media (min-width: 992px) {
-            .container {
-                max-width: 960px;
-            }
-        }
-        
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-        
-        .section {
-            padding: 6rem 0;
-            position: relative;
-        }
-        
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 4px;
-            background-color: #0056b3;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        .section-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .btn {
-            display: inline-block;
-            font-weight: 400;
-            color: #212529;
-            text-align: center;
-            vertical-align: middle;
-            user-select: none;
-            background-color: transparent;
-            border: 1px solid transparent;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: 0.25rem;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        
-        .btn-primary {
-            color: #fff;
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        
-        .btn-primary:hover {
-            color: #fff;
-            background-color: #004494;
-            border-color: #004494;
-        }
-        
-        .btn-outline-primary {
-            color: #0056b3;
-            border-color: #0056b3;
-        }
-        
-        .btn-outline-primary:hover {
-            color: #fff;
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        
-        .navbar {
-            position: relative;
+        .icon-container {
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 1rem;
-        }
-        
-        .navbar-brand {
-            display: inline-block;
-            padding-top: 0.3125rem;
-            padding-bottom: 0.3125rem;
-            margin-right: 1rem;
-            font-size: 1.25rem;
-            line-height: inherit;
-            white-space: nowrap;
-        }
-        
-        .navbar-nav {
-            display: flex;
-            flex-direction: column;
-            padding-left: 0;
-            margin-bottom: 0;
-            list-style: none;
-        }
-        
-        .nav-link {
-            display: block;
-            padding: 0.5rem 1rem;
-            color: #0056b3;
-            text-decoration: none;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-        }
-        
-        .nav-link:hover {
-            color: #004494;
-            text-decoration: none;
-        }
-        
-        .footer {
-            background-color: #343a40;
-            color: #fff;
-            padding: 4rem 0;
-        }
-        
-        .footer-title {
-            position: relative;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 500;
-        }
-        
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 3px;
-            background-color: #0056b3;
-        }
-        
-        .footer-link {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.15s ease-in-out;
-        }
-        
-        .footer-link:hover {
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .social-icon {
-            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
             transition: all 0.3s ease;
         }
         
-        .social-icon:hover {
-            background-color: #0056b3;
-            color: #fff;
-            transform: translateY(-3px);
+        .section-card:hover .icon-container {
+            background-color: #2563eb;
+            color: white;
+            transform: scale(1.1);
         }
         
-        /* Placeholder styles for empty content areas */
-        .placeholder {
-            background-color: #f8f9fa;
-            border-radius: 0.25rem;
-            margin-bottom: 1rem;
-            position: relative;
-            overflow: hidden;
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
-            animation: shimmer 1.5s infinite;
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
         }
         
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-        
-        .placeholder-sm {
-            height: 1rem;
-        }
-        
-        .placeholder-md {
-            height: 1.5rem;
-        }
-        
-        .placeholder-lg {
-            height: 2rem;
-        }
-        
-        .placeholder-xl {
-            height: 3rem;
-        }
-        
-        .placeholder-2xl {
-            height: 4rem;
-        }
-        
-        .placeholder-img {
-            aspect-ratio: 16/9;
-            background-color: #e9ecef;
-        }
-        
-        .placeholder-card {
-            padding: 1.25rem;
-            background-color: #fff;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
     </style>
 </head>
-<body>
-    <!-- Header/Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container">
-            <nav class="navbar">
-                <a class="navbar-brand" href="#">
-                    <div class="placeholder placeholder-md w-32"></div>
-                </a>
-                
-                <div class="ml-auto">
-                    <ul class="navbar-nav d-flex flex-row">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-soft">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/26484dd94e60489b967fd9ba0fd73bd2~tplv-a9rns2rl98-image.image?rcl=20251116094857D4E237FCEC9789F6F70F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1765849752&x-signature=0i%2B3zNCzoJxtjhT%2FRXVTeCZke80%3D" alt="SkinGuard Logo" class="h-12 w-12 mr-3">
+                <h1 class="text-2xl font-bold text-primary">SkinGuard</h1>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-6">
+                <a href="#why" class="text-gray-600 hover:text-primary transition-all-300">Why SkinGuard</a>
+                <a href="#impact" class="text-gray-600 hover:text-primary transition-all-300">The Impact</a>
+                <a href="#solution" class="text-gray-600 hover:text-primary transition-all-300">Our Solution</a>
+                <a href="#goals" class="text-gray-600 hover:text-primary transition-all-300">Our Goals</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-primary text-white py-20">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-white">
-                        <div class="placeholder placeholder-xl mb-4"></div>
-                        <div class="placeholder placeholder-lg mb-2"></div>
-                        <div class="placeholder placeholder-md mb-6"></div>
-                    </div>
-                    <div class="placeholder placeholder-lg mb-6"></div>
-                    <div class="placeholder placeholder-lg mb-6"></div>
-                    <button class="btn btn-white text-primary font-weight-bold px-6 py-3 rounded-0">
-                        <div class="placeholder placeholder-sm w-24"></div>
-                    </button>
+    <section class="bg-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-shadow animate-fadeIn">Impact</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 animate-fadeIn delay-100">
+                Transforming eczema management from reactive treatment to proactive prevention
+            </p>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section id="why" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why SkinGuard?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="animate-fadeIn">
+                    <p class="text-lg text-gray-700 mb-6">
+                        Eczema, skin inflammation, and chronic dry skin are common skin issues nowadays, affecting millions of teenagers and adults across the United States, imposing significant physical and emotional burdens on daily life.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        According to clinical research and public health data, approximately 10% of U.S. children and adolescents (ages 12–17) live with eczema, while the condition persists or develops in 7–10% of adults—translating to over 30 million Americans grappling with these skin challenges.
+                    </p>
                 </div>
-                <div class="col-lg-6 mt-10 mt-lg-0">
-                    <div class="placeholder placeholder-img rounded-lg"></div>
+                <div class="flex justify-center animate-fadeIn delay-200">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/0093e2a49b2141db98f56d0632b45d53~tplv-a9rns2rl98-image.image?rcl=20251116094857D4E237FCEC9789F6F70F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1765849763&x-signature=gHK7AmgNCbmR0%2BJy%2BQA5cShASWY%3D" alt="Skin Health Icons" class="max-w-full h-auto rounded-lg shadow-soft">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="text-center mb-12">
-                <div class="section-title d-inline-block">
-                    <div class="placeholder placeholder-xl mb-4"></div>
+    <!-- Impact Section -->
+    <section id="impact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">The Impact</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Teens Impact -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn">
+                    <div class="icon-container">
+                        <i class="fa fa-child text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Impact on Teenagers</h3>
+                    <p class="text-gray-600">
+                        For teenagers, these skin problems go far beyond physical discomfort; they also have emotional consequences. Eczema flare-ups often appear on visible areas like the face, arms, and legs, leading to a lack of self-confidence and social anxiety.
+                    </p>
                 </div>
-                <div class="placeholder placeholder-md mx-auto w-2/3"></div>
+                
+                <!-- Adults Impact -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-100">
+                    <div class="icon-container">
+                        <i class="fa fa-user text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Impact on Adults</h3>
+                    <p class="text-gray-600">
+                        Adults face different challenges: chronic skin irritation can impact professional relationships, as noticeable inflammation can affect confidence in the workplace. Recurring flare-ups also add to their workload outside of work.
+                    </p>
+                </div>
+                
+                <!-- Emotional Impact -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-200">
+                    <div class="icon-container">
+                        <i class="fa fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Emotional Toll</h3>
+                    <p class="text-gray-600">
+                        Studies show that individuals with chronic skin conditions are more likely to experience anxiety and depression, driven by the frustration of unpredictable symptoms and the stigma of "visible" health issues.
+                    </p>
+                </div>
             </div>
             
-            <div class="row">
-                <div class="col-md-4 mb-8">
-                    <div class="card h-100 p-6">
-                        <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center mb-6">
-                            <div class="placeholder placeholder-sm w-8 h-8"></div>
-                        </div>
-                        <div class="placeholder placeholder-lg mb-4"></div>
-                        <div class="placeholder placeholder-md mb-2"></div>
-                        <div class="placeholder placeholder-md mb-2"></div>
-                        <div class="placeholder placeholder-md"></div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-8">
-                    <div class="card h-100 p-6">
-                        <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full-center mb-6">
-                            <div class="placeholder placeholder-sm w-8 h-8"></div>
-                        </div>
-                        <div class="placeholder placeholder-lg mb-4"></div>
-                        <div class="placeholder placeholder-md mb-2"></div>
-                        <div class="placeholder placeholder-md mb-2"></div>
-                        <div class="placeholder placeholder-md"></div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-8">
-                    <div class="card h-100 p-6">
-                        <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex-center mb-6">
-                            <div class="placeholder placeholder-sm w-8 h-8"></div>
-                        </div>
-                        <div class="placeholder placeholder-lg mb-4"></div>
-                        <div class="placeholder placeholder-md mb-2"></div>
-                        <div class="placeholder placeholder-md mb-2"></div>
-                        <div class="placeholder placeholder-md"></div>
-                    </div>
-                </div>
+            <!-- Additional Impact Content -->
+            <div class="mt-12 bg-white rounded-xl shadow-soft p-8 animate-fadeIn delay-300">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Beyond Individual Hardship</h3>
+                <p class="text-gray-600 mb-4">
+                    These skin issues also place a hidden burden on families: parents of affected teens often juggle doctor appointments, treatment routines, and emotional support, while adults may face missed workdays or reduced productivity due to discomfort.
+                </p>
+                <p class="text-gray-600">
+                    In a nation that values health and quality of life, the widespread impact of these skin conditions underscores the urgent need for accessible, proactive solutions. For millions of Americans, managing eczema, inflammation, and dry skin isn't just a matter of skincare—it's a daily fight to reclaim comfort, confidence, and control over their lives.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-10 mb-lg-0">
-                    <div class="placeholder placeholder-img rounded-lg"></div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-title">
-                        <div class="placeholder placeholder-xl mb-4"></div>
-                    </div>
-                    <div class="placeholder placeholder-md mb-4"></div>
-                    <div class="placeholder placeholder-md mb-4"></div>
-                    <div class="placeholder placeholder-md mb-6"></div>
-                    
-                    <div class="row mt-8">
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                                    <div class="placeholder placeholder-xs w-4 h-4"></div>
-                                </div>
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                                    <div class="placeholder placeholder-xs w-4 h-4"></div>
-                                </div>
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                                    <div class="placeholder placeholder-xs w-4 h-4"></div>
-                                </div>
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center-center justify-center mr-3">
-                                    <div class="placeholder placeholder-xs w-4 h-4"></div>
-                                </div>
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="text-center mb-12">
-                <div class="section-title d-inline-block">
-                    <div class="placeholder placeholder-xl mb-4"></div>
-                </div>
-                <div class="placeholder placeholder-md mx-auto w-2/3"></div>
-            </div>
+    <!-- Solution Section -->
+    <section id="solution" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Solution</h2>
             
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-8">
-                    <div class="card h-100">
-                        <div class="placeholder placeholder-img"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-3"></div>
-                            <div class="placeholder placeholder-md mb-2"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <a href="#" class="text-primary font-weight-medium d-flex align-items-center">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                                <div class="ml-2 placeholder placeholder-xs w-4 h-4"></div>
-                            </a>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 animate-fadeIn delay-100">
+                    <h3 class="text-2xl font-semibold mb-6 text-primary">SkinGuard: Smart Prevention for Eczema</h3>
+                    <p class="text-lg text-gray-700 mb-6">
+                        SkinGuard is a smart and convenient device that connects via a mobile app, integrating datasets and artificial intelligence technology, specifically designed for eczema sufferers.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        It shifts the focus from passive treatment to proactive prevention, helping children, teenagers, and their families manage this chronic condition. Unlike creams/medications that only work after an eczema flare-up, SkinGuard focuses on prevention.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        It combines personal medical history, environmental factors, and big data analytics to provide clear, personalized solutions, transforming prevention into a digital, healthier lifestyle habit.
+                    </p>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 mb-8">
-                    <div class="card h-100">
-                        <div class="placeholder placeholder-img"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-3"></div>
-                            <div class="placeholder placeholder-md mb-2"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <a href="#" class="text-primary font-weight-medium d-flex align-items-center">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                                <div class="ml-2 placeholder placeholder-xs w-4 h-4"></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-8">
-                    <div class="card h-100">
-                        <div class="placeholder placeholder-img"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-3"></div>
-                            <div class="placeholder placeholder-md mb-2"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <a href="#" class="text-primary font-weight-medium d-flex align-items-center">
-                                <div class="placeholder placeholder-sm w-16"></div>
-                                <div class="ml-2 placeholder placeholder-xs w-4 h-4"></div>
-                            </a>
-                        </div>
+                <div class="order-1 md:order-2 flex justify-center animate-fadeIn">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary rounded-full opacity-10 blur-3xl"></div>
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/26484dd94e60489b967fd9ba0fd73bd2~tplv-a9rns2rl98-image.image?rcl=20251116094857D4E237FCEC9789F6F70F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1765849752&x-signature=0i%2B3zNCzoJxtjhT%2FRXVTeCZke80%3D" alt="SkinGuard Device" class="h-64 w-64 object-contain relative z-10">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="section">
-        <div class="container">
-            <div class="text-center mb-12">
-                <div class="section-title d-inline-block">
-                    <div class="placeholder placeholder-xl mb-4"></div>
-                </div>
-                <div class="placeholder placeholder-md mx-auto w-2/3"></div>
-            </div>
+    <!-- Goals Section -->
+    <section id="goals" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Goals</h2>
             
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-8">
-                    <div class="card h-100 text-center">
-                        <div class="placeholder placeholder-img rounded-full w-48 h-48 mx-auto mt-4"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-2"></div>
-                            <div class="placeholder placeholder-sm w-24 mx-auto mb-3"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <div class="flex justify-content-center">
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Goal 1 -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn">
+                    <div class="icon-container">
+                        <i class="fa fa-shield text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Take Control of Skin Health</h3>
+                    <p class="text-gray-600">
+                        Help users better protect and maintain healthy skin in daily life, minimizing chronic dryness and inflammation.
+                    </p>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-8">
-                    <div class="card h-100 text-center">
-                        <div class="placeholder placeholder-img rounded-full w-48 h-48 mx-auto mt-4"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-2"></div>
-                            <div class="placeholder placeholder-sm w-24 mx-auto mb-3"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <div class="d-flex justify-content-center">
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                            </div>
-                        </div>
+                <!-- Goal 2 -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-100">
+                    <div class="icon-container">
+                        <i class="fa fa-medkit text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Reduce Medical Burden</h3>
+                    <p class="text-gray-600">
+                        Cut down on unnecessary medical expenses and visit times by preventing flare-ups before they occur.
+                    </p>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-8">
-                    <div class="card h-100 text-center">
-                        <div class="placeholder placeholder-img rounded-full w-48 h-48 mx-auto mt-4"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-2"></div>
-                            <div class="placeholder placeholder-sm w-24 mx-auto mb-3"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <div class="d-flex justify-content-center">
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover hover:text-primary">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                            </div>
-                        </div>
+                <!-- Goal 3 -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-200">
+                    <div class="icon-container">
+                        <i class="fa fa-smile-o text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Regain Confidence</h3>
+                    <p class="text-gray-600">
+                        Help users regain confidence in daily life by managing their condition proactively and effectively.
+                    </p>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-8">
-                    <div class="card h-100 text-center">
-                        <div class="placeholder placeholder-img rounded-full w-48 h-48 mx-auto mt-4"></div>
-                        <div class="p-6">
-                            <div class="placeholder placeholder-lg mb-2"></div>
-                            <div class="placeholder placeholder-sm w-24 mx-auto mb-3"></div>
-                            <div class="placeholder placeholder-md mb-4"></div>
-                            <div class="d-flex justify-content-center">
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary mr-3">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                                <a href="#" class="social-icon text-muted hover:text-primary">
-                                    <div class="placeholder placeholder-xs w-5 h-5"></div>
-                                </a>
-                            </div>
-                        </div>
+                <!-- Goal 4 -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-300">
+                    <div class="icon-container">
+                        <i class="fa fa-users text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Support for Families</h3>
+                    <p class="text-gray-600">
+                        Provide safe and reliable tools for parents to help protect their children from the stress of unpredictable symptoms.
+                    </p>
+                </div>
+                
+                <!-- Goal 5 -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-400">
+                    <div class="icon-container">
+                        <i class="fa fa-sitemap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Build an Ecosystem</h3>
+                    <p class="text-gray-600">
+                        Create partnerships with school clubs, foundations, and prototyping through workshops—building a unique and continuously evolving system.
+                    </p>
+                </div>
+                
+                <!-- Goal 6 -->
+                <div class="bg-white rounded-xl shadow-soft p-8 section-card animate-fadeIn delay-400">
+                    <div class="icon-container">
+                        <i class="fa fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Make Solutions Accessible</h3>
+                    <p class="text-gray-600">
+                        Combine education, advocacy, and innovative technology to make sustainable eczema management solutions accessible to all who need them.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="text-center mb-12">
-                <div class="section-title d-inline-block">
-                    <div class="placeholder placeholder-xl mb-4"></div>
-                </div>
-                <div class="placeholder placeholder-md mx-auto w-2/3"></div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-8">
-                    <div class="card h-100 p-6 bg-white">
-                        <div class="flex items-center mb-4">
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                        </div>
-                        <div class="placeholder placeholder-md mb-6"></div>
-                        <div class="d-flex align-items-center">
-                            <div class="placeholder placeholder-img rounded-full w-12 h-12 mr-4"></div>
-                            <div>
-                                <div class="placeholder placeholder-sm w-20"></div>
-                                <div class="placeholder placeholder-xs w-16"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-8">
-                    <div class="card h-100 p-6 bg-white">
-                        <div class="flex items-center mb-4">
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                        </div>
-                        <div class="placeholder placeholder-md mb-6"></div>
-                        <div class="d-flex align-items-center">
-                            <div class="placeholder placeholder-img rounded-full w-12 h-12 mr-4"></div>
-                            <div>
-                                <div class="placeholder placeholder-sm w-20"></div>
-                                <div class="placeholder placeholder-xs w-16"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-8">
-                    <div class="card h-100 p-6 bg-white">
-                        <div class="flex items-center mb-4">
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning mr-1">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                            <div class="text-warning">
-                                <div class="placeholder placeholder-xs w-4 h-4"></div>
-                            </div>
-                        </div>
-                        <div class="placeholder placeholder-md mb-6"></div>
-                        <div class="d-flex align-items-center">
-                            <div class="placeholder placeholder-img rounded-full w-12 h-12 mr-4"></div>
-                            <div>
-                                <div class="placeholder placeholder-sm w-20"></div>
-                                <div class="placeholder placeholder-xs w-16"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-10 mb-lg-0">
-                    <div class="section-title">
-                        <div class="placeholder placeholder-xl mb-4"></div>
-                    </div>
-                    <div class="placeholder placeholder-md mb-6"></div>
-                    
-                    <div class="row mb-6">
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="bg-primary bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <div class="placeholder placeholder-xs w-6 h-6"></div>
-                                </div>
-                                <div>
-                                    <div class="placeholder placeholder-sm w-24 mb-2"></div>
-                                    <div class="placeholder placeholder-sm w-32"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="bg-primary bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <div class="placeholder placeholder-xs w-6 h-6"></div>
-                                </div>
-                                <div>
-                                    <div class="placeholder placeholder-sm w-24 mb-2"></div>
-                                    <div class="placeholder placeholder-sm w-32"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="bg-primary bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <div class="placeholder placeholder-xs w-6 h-6"></div>
-                                </div>
-                                <div>
-                                    <div class="placeholder placeholder-sm w-24 mb-2"></div>
-                                    <div class="placeholder placeholder-sm w-32"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="bg-primary bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                                    <div class="placeholder placeholder-xs w-6 h-6"></div>
-                                </div>
-                                <div>
-                                    <div class="placeholder placeholder-sm w-24 mb-2"></div>
-                                    <div class="placeholder placeholder-sm w-32"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex">
-                        <a href="#" class="social-icon mr-3">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                        <a href="#" class="social-icon mr-3">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                        <a href="#" class="social-icon mr-3">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="card p-6">
-                        <div class="section-title">
-                            <div class="placeholder placeholder-xl mb-4"></div>
-                        </div>
-                        
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="placeholder placeholder-md w-full h-12"></div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="placeholder placeholder-md w-full h-12"></div>
-                                </div>
-                                <div class="col-md-12 mb-4">
-                                    <div class="placeholder placeholder-md w-full h-12"></div>
-                                </div>
-                                <div class="col-md-12 mb-4">
-                                    <div class="placeholder placeholder-md w-full h-12"></div>
-                                </div>
-                                <div class="col-md-12 mb-4">
-                                    <div class="placeholder placeholder-md w-full h-32"></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary px-6 py-3 w-full">
-                                        <div class="placeholder placeholder-sm w-24 mx-auto"></div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Join the SkinGuard Revolution</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Together, we can transform eczema management from a daily struggle to a proactive journey towards healthier skin.
+            </p>
+            <button class="bg-white text-primary font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                Learn More About SkinGuard
+            </button>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-8 mb-lg-0">
-                    <div class="footer-title">
-                        <div class="placeholder placeholder-lg"></div>
-                    </div>
-                    <div class="placeholder placeholder-md mb-4"></div>
-                    <div class="placeholder placeholder-md mb-6"></div>
-                    <div class="flex">
-                        <a href="#" class="social-icon mr-3">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                        <a href="#" class="social-icon mr-3">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                        <a href="#" class="social-icon mr-3">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <div class="placeholder placeholder-xs w-6 h-6"></div>
-                        </a>
-                    </div>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/26484dd94e60489b967fd9ba0fd73bd2~tplv-a9rns2rl98-image.image?rcl=20251116094857D4E237FCEC9789F6F70F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1765849752&x-signature=0i%2B3zNCzoJxtjhT%2FRXVTeCZke80%3D" alt="SkinGuard Logo" class="h-10 w-10 mr-3">
+                    <h2 class="text-xl font-bold">SkinGuard</h2>
                 </div>
-                
-                <div class="col-lg-2 col-md-6 mb-8 mb-lg-0">
-                    <div class="footer-title">
-                        <div class="placeholder placeholder-lg"></div>
-                    </div>
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-8 mb-lg-0">
-                    <div class="footer-title">
-                        <div class="placeholder placeholder-lg"></div>
-                    </div>
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer-link">
-                                <div class="placeholder placeholder-sm w-24"></div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-title">
-                        <div class="placeholder placeholder-lg"></div>
-                    </div>
-                    <div class="placeholder placeholder-md mb-4"></div>
-                    <div class="mb-4">
-                        <div class="placeholder placeholder-md w-full h-12"></div>
-                    </div>
-                    <button class="btn btn-primary w-full">
-                        <div class="placeholder placeholder-sm w-24 mx-auto"></div>
-                    </button>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#why" class="text-gray-300 hover:text-white transition-all-300">Why SkinGuard</a>
+                    <a href="#impact" class="text-gray-300 hover:text-white transition-all-300">The Impact</a>
+                    <a href="#solution" class="text-gray-300 hover:text-white transition-all-300">Our Solution</a>
+                    <a href="#goals" class="text-gray-300 hover:text-white transition-all-300">Our Goals</a>
                 </div>
             </div>
-            
-            <div class="border-top border-gray-700 mt-8 pt-8">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="placeholder placeholder-sm w-48"></div>
-                    </div>
-                    <div class="col-md-6 text-md-right">
-                        <div class="placeholder placeholder-sm w-64 ml-auto"></div>
-                    </div>
-                </div>
+            <hr class="border-gray-700 my-8">
+            <div class="text-center text-gray-400">
+                <p>&copy; 2025 SkinGuard. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Initialize animations with GSAP
+        // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate sections on scroll
-            const sections = document.querySelectorAll('.section');
+            // Check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
             
-            const animateOnScroll = () => {
-                sections.forEach(section => {
-                    const sectionTop = section.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (sectionTop < windowHeight * 0.85) {
-                        gsap.to(section, {
-                            opacity: 1,
-                            y: 0,
-                            duration: 1,
-                            ease: 'power2.out'
-                        });
+            // Animate elements when they come into view
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.section-card');
+                
+                elements.forEach(element => {
+                    if (isInViewport(element) && !element.classList.contains('animated')) {
+                        element.classList.add('animated');
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
                     }
                 });
-            };
+            }
             
-            // Initial setup
-            sections.forEach(section => {
-                gsap.set(section, {
-                    opacity: 0,
-                    y: 50
-                });
+            // Initialize styles for animation
+            document.querySelectorAll('.section-card').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             });
             
-            // Animate once on load
-            setTimeout(animateOnScroll, 300);
+            // Run once on load
+            animateOnScroll();
             
-            // Animate on scroll
+            // Run on scroll
             window.addEventListener('scroll', animateOnScroll);
-            
-            // Navbar scroll effect
-            const navbar = document.querySelector('header');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('shadow');
-                } else {
-                    navbar.classList.remove('shadow');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
-            
-            // Card hover effect
-            const cards = document.querySelectorAll('.card');
-            
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    gsap.to(card, {
-                        y: -5,
-                        boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
-                        duration: 0.3
-                    });
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    gsap.to(card, {
-                        y: 0,
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                        duration: 0.3
-                    });
-                });
-            });
+        });
+        
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-soft');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-soft');
+            }
+        });
+        
+        // CTA button click event
+        document.querySelector('button').addEventListener('click', function() {
+            alert('Thank you for your interest in SkinGuard! We will be in touch soon with more information.');
         });
     </script>
 </body>
